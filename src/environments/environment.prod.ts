@@ -1,0 +1,17 @@
+export const environment = {
+  production: true,
+  url: 'https://visabackend.immivisas.in',
+  assessment_url: process.env['ASSESSMENT_URL'],
+  auth_url: process.env['AUTH_URL'],
+  communication_url: process.env['COMMUNICATION_URL'],
+  content_url: process.env['CONTENT_URL'],
+  customer_url: process.env['CUSTOMER_URL'],
+  diet_url: process.env['DIET_URL'],
+  employee_url: process.env['EMPLOYEE_URL'],
+  health_url: process.env['HEALTH_URL'],
+  notifications_url: process.env['NOTIFICATIONS_URL'],
+  pos_url: process.env['POS_URL'],
+  payment_url: process.env['PAYMENT_URL'],
+  wellness_url: process.env['WELLNESS_URL'],
+  dashboard_url: process.env['DASHBOARD_URL'],
+};

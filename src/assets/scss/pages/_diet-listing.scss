@@ -1,0 +1,53 @@
+.chips-filters {
+    width: 100%;
+    @include border-radius(20px);
+    .chips-row {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+        column-gap: 0.5rem;
+        align-items: center;
+    }
+    .chips-item {
+        flex: 0 0 calc(100% / 8);
+    }
+    .ng-select {
+        .ng-select-container {
+            border-color: $border-light-2;
+            border-radius: 50px !important;
+            .ng-value-container {
+                flex-wrap: unset !important;
+                .ng-value {
+                    font-size: 12px;
+                    border-radius: 10px 10px;
+                    .ng-value-icon {
+                        &:hover {
+                            border-radius: 0px 10px 10px 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .form-control {
+        min-width: 118px;
+        min-height: 36px;
+        font-size: 12px;
+        border-color: $border-light-2;
+        border-radius: 50px !important;
+    }
+    .reset {
+        a {
+            display: block;
+            padding: 4px 20px;
+            border: 1px solid $primary;
+            border-radius: 50px;
+            line-height: 26px;
+            @include transition_custom(0.2s);
+            &:hover {
+                background: $primary;
+                color: $color-white;
+            }
+        }
+    }
+}

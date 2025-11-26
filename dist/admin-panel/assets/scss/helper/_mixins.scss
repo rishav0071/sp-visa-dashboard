@@ -1,0 +1,43 @@
+/*Font px into rem mixins*/
+@function rem($target, $context: $base-size) {
+  @return calc($target / $context) * 1rem;
+}
+
+// FontsTypo
+@mixin fontTypo($size: inherit, $line-height: inherit, $font-weight: unset) {
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+}
+
+/*Responsive mixins*/
+$breakpoints: (
+  'min-width-1519': (min-width: 1519px),
+  'max-width-480': (max-width: 480px),
+);
+
+@mixin breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media only screen and #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a breakpoint named `#{$name}`.";
+  }
+}
+
+@mixin transition_custom($min) {
+  transition: all $min ease-in-out;
+  -moz-transition: all $min ease-in-out;
+  -webkit-transition: all $min ease-in-out;
+  -o-transition: all $min ease-in-out;
+  -ms-transition: all $min ease-in-out;
+}
+
+@mixin border-radius($top-left:10px, $top-right:null, $bottom-right:null, $bottom-left:null) {
+  -webkit-border-radius: $top-left $top-right $bottom-right $bottom-left;
+  -moz-border-radius: $top-left $top-right $bottom-right $bottom-left;
+  -ms-border-radius: $top-left $top-right $bottom-right $bottom-left;
+  border-radius: $top-left $top-right $bottom-right $bottom-left;
+}

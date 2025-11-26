@@ -1,0 +1,22 @@
+<div class="postion-relative">
+    <div class="d-flex justify-content-between">
+        <label class="text-dark font-13 fw-600 mb-1">{{type.lable}}</label>
+        <div>
+            <span><i class="fa fa-info-circle cursor-pointer text-primary me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" [title]="type.toltip" aria-hidden="true"></i></span>
+            <span><i *ngIf="!listingtoggle" (click)="this.listingtoggle = !this.listingtoggle" class="cursor-pointer fas fa-eye text-primary"></i></span>
+            <span><i *ngIf="listingtoggle" (click)="this.listingtoggle = !this.listingtoggle" class="cursor-pointer far fa-times-circle text-primary"></i></span>
+        </div>
+    </div>
+    <ng-container *ngIf="!listingtoggle">
+        <textarea class="form-control font-13 border bg-white" rows="4" (blur)="changged(instructionvalue)" [(ngModel)]="instructionvalue" [placeholder]="type.placeholder"></textarea>
+    </ng-container>
+    <ng-container *ngIf="listingtoggle">
+        <div class="listing-show">
+            <ul>
+                <li *ngFor="let item of instruction; let i = index;"><span class="me-2 d-inline-block">{{i+1}}.</span>{{item}}</li>
+            </ul>
+        </div>
+    </ng-container>
+
+
+</div>

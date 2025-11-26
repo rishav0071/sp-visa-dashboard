@@ -1,0 +1,46 @@
+.members-layout {
+    .sticky-md-top {
+        top: 52px;
+        z-index: 1030;
+        @include media-breakpoint-down(lg) {
+            top: 48px;
+        }
+    }
+    .profile-info {
+        .avatar {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            background: $primary;
+            color: $color-white;
+            border-radius: 50px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+        .details {
+            column-gap: 20px;
+            row-gap: 5px;
+            @include media-breakpoint-up(lg) {
+                column-gap: 24px;
+            }
+            @include media-breakpoint-down(sm) {
+                border-left: none !important;
+            }
+            .info-item {
+                p {
+                    font-size: 12px;
+                    line-height: 20px;
+                    @include media-breakpoint-up(lg) {
+                        font-size: 13px;
+                        line-height: 24px;
+                    }
+                }
+                h4 {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

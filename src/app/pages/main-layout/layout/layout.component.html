@@ -1,0 +1,21 @@
+<div class="admin-wrapper">
+  <app-navbar></app-navbar>
+  <main class="setup-guide-ui d-flex align-items-stretch">
+    <div class="nav-sidebar scrollbar-hidden" [ngClass]="{'addClass':classNavBar}" (mouseout)="classNavBar = false">
+      <ul class="sidebar-menus mt-5">
+        <li class="nav-item" *ngFor="let item of siblingMenu">
+          <ng-container *ngIf="item.permission">
+            <!-- routerLinkActive="active" -->
+            <a (click)="changedrouter(item.routerLink)" [ngClass]="{'active':lastURl === item.routerLink}" class="nav-link cursor-pointer">
+              <span class="icon"><img [src]="item.icon" width="18" height="18"></span>
+              <p class="name">{{item.title}}</p>
+            </a>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

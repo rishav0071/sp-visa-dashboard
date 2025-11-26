@@ -1,0 +1,44 @@
+.slots-listing {
+    .weekDay {
+        position: relative;
+        z-index: 1;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 20px;
+            height: 20px;
+            background: $light-gray-v3;
+            z-index: -1;
+        }
+    }
+    .slotList {
+        position: relative;
+        z-index: 1;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            height: 100%;
+            border: 1px dashed $border-light-2;
+            z-index: -1;
+        }
+        li {
+            background: white;
+            min-width: 160px;
+            border-radius: 8px 3px 8px 3px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            &:hover {
+                background: $light-gray-v5;
+            }
+            &.selected {
+                background: $secondary;
+            }
+        }
+    }
+}

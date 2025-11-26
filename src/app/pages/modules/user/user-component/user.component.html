@@ -1,0 +1,133 @@
+<div class="bg-light-gray-v3 min-vh-100 py-xxl-4 py-3 px-3">
+  <!-- Page Heading -->
+  <div
+    class="page-heading d-lg-flex justify-content-lg-between align-items-lg-center"
+  >
+    <h5 class="mb-lg-0 mb-3">User</h5>
+  </div>
+
+  <!-- Filters -->
+  <div class="search-filters d-sm-flex flex-wrap justify-content-between mt-3">
+    <div class="flex-fill mb-2">
+      <searchFilter
+        [action]="searchFilterAction"
+        (sendSearchData)="filterData($event)"
+      ></searchFilter>
+    </div>
+    <div class="filters-right d-flex align-items-center mb-2">
+      <div class="advancedFilter-btn mx-1 mb-2 mb-lg-0">
+        <button
+          type="button"
+          class="btn btn-primary shadow-1 font-13 fw-500 py-2"
+          (click)="openCateogryModal()"
+        >
+          <i class="fas fa-plus"></i>&nbsp; Add Cateogry
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cateogry Table -->
+  <div class="table-design bg-white rounded-3 shadow-1 mt-3 mb-3 py-2">
+    <div class="table-responsive" style="min-height: 250px">
+      <table class="table table-borderless table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Pasport Number</th>
+            <th>TRN Number</th>
+            <th>Created At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="!showSpin">
+            <!-- If No record found -->
+            <ng-container *ngIf="getDataList.length === 0">
+              <tr>
+                <td
+                  colspan="20"
+                  class="text-danger fw-500 text-center"
+                  style="height: 200px"
+                >
+                  Record Not Found
+                </td>
+              </tr>
+            </ng-container>
+            <!-- If record found -->
+            <ng-container *ngIf="getDataList.length">
+              <tr *ngFor="let data of getDataList">
+                <td>
+                  {{ data.name }}
+                </td>
+                <td>
+                  {{ data.email }}
+                </td>
+                <td>
+                  {{ data.passport }}
+                </td>
+                <td>
+                  {{ data.trnNumber }}
+                </td>
+                <td>{{ data.createdAt | date : "dd/MM/YYYY" }}</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2 action-buttons">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        [id]="'userStatusToggle_' + data._id"
+                        [checked]="data.isActive === true"
+                        (change)="toggleUserStatus(data)"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-primary"
+                      (click)="editUser(data)"
+                      title="Edit User"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-danger"
+                      (click)="deleteUserData(data)"
+                      title="Delete User"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+          <!-- Spin -->
+          <ng-container *ngIf="showSpin">
+            <tr>
+              <td colspan="12" class="p-0">
+                <div
+                  class="table-loader w-100 h-100 bg-white d-flex flex-column justify-content-center align-items-center"
+                  style="min-height: 300px"
+                >
+                  <div class="spin-loader"></div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <ng-container *ngIf="getDataList.length">
+    <div>
+      <app-pagination
+        [pagination]="paginationdata"
+        (paginationSend)="paginationGet($event)"
+      ></app-pagination>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,54 @@
+// Default Colors
+$primary: #333655;
+$primary-hover: #333655;
+$primary-opacity-05: rgba(255, 134, 67, 0.05);
+$secondary: #99E8D3;
+$secondary-light: #ECFFFD;
+// Custom Colors
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-danger :#F54F4C;
+$color-green :#53D477;
+$color-sky: #05A8AA;
+$color-warn: #EFB123;
+$cyan-blue: #1E293B;
+$color-dark: #262B37;
+$dark-gray: #777777;
+$dark-gray-v2: #A4A4A4;
+$light-gray: #DEDCDA;
+$light-gray-v2: #f6f8fa;
+$light-gray-v3: #f3f8f7;
+$light-gray-v4: #fdfdfd;
+$light-gray-v5: #f9f9f9;
+$dark-warning: #FFC943;
+$light-warning: #F9F4F1;
+// $dark-primary: #0e1642;
+$dark-primary: #1A97D4;
+// Badges Colors
+$badge-sky: #E1FDF6;
+$badge-orange: #FBF0D4;
+$badge-green: #B5C93C;
+// Border Colors
+$border-dark: #918e8e;
+$border-light: #E1DDDA;
+$border-light-2: #DADADA;
+$border-light-3: #f1f1f1;
+$border-light-4: #ebebeb;
+$border-light-5: #ADADAD;
+$border-light-6: #F2F5FB;
+// Font Family
+$font-manrope: 'Manrope',
+sans-serif;
+$fonts-path: "../../fonts" !default;
+
+/*Icomoon*/
+
+$icomoon-font-family: "icomoon" !default;
+$icomoon-font-path: "../../fonts" !default;
+$icon-white-plus: "\e90c";
+$icon-icon-arrow-left: "\e90a";
+$icon-icon-arrow-right: "\e90b";
+// Root Font Size
+$base-size: 16;
+$enable-negative-margins: true;
+$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$primary}'/></svg>") !default;

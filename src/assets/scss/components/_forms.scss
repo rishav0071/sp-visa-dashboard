@@ -1,0 +1,43 @@
+.form-check input[type="radio"]:checked {
+    background-color: #fff;
+    outline: none;
+    box-shadow: none;
+    .form-check-input{
+        outline: none;
+        box-shadow: none;
+        &:focus{
+            outline: none;
+            box-shadow: none !important;
+        }
+    }
+}
+
+.form-control,
+.form-select {
+    min-height: 36px;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    &.is-invalid {
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.scheduler-border {
+    border: 1px dashed #ccc;
+    padding: 12px;
+    border-radius: 2px;
+    legend {
+        float: none;
+        width: auto;
+        margin: 0px;
+        padding: 0px 5px;
+        font-size: 12px;
+        font-weight: 600;
+        color: $primary;
+    }
+}

@@ -1,0 +1,86 @@
+.nav-sidebar {
+    position: fixed;
+    top: 49px;
+    width: 100%;
+    flex: 0 0 60px;
+    max-width: 60px;
+    height: calc(100vh - 49px);
+    background: $color-white;
+    box-shadow: rgba(81, 111, 144, 0.25) 1px 0px 3px 0px;
+    overflow-y: auto;
+    z-index: 1040;
+    @include media-breakpoint-up(md) {
+        top: 53px;
+        height: calc(100vh - 53px);
+    }
+    .sidebar-menus {
+        .nav-item {
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+            .nav-link {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 13px;
+                font-weight: 500;
+                line-height: 18px;
+                padding: 8px 10px;
+                text-transform: capitalize;
+                transition: background 0.3s ease-in-out;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    height: 100%;
+                    border-left: 4px solid transparent;
+                    border-radius: 0px 5px 5px 0px;
+                }
+                &.active, &:hover {
+                    // background: linear-gradient(96.83deg, rgba(255, 89, 0, 0.2496) 2.45%, rgba(242, 86, 0, 0.0256) 120.59%);
+                    background: $border-light-4;
+                    &::before {
+                        border-left-color: $primary;
+                    }
+                }
+                .icon {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 30px;
+                    min-width: 30px;
+                    height: 30px;
+                    font-size: 1rem;
+                }
+                .name {
+                    display: none;
+                    flex: 1 1 auto;
+                    margin-inline-start: 3px;
+                    transition: display .29s ease-in-out;
+                }
+            }
+        }
+    }
+    &:hover {
+        flex: 0 0 210px;
+        max-width: 210px;
+        .sidebar-menus {
+            .nav-item {
+                .nav-link {
+                    .name {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main-content {
+    position: relative;
+    width: calc(100% - 60px);
+    margin-left: auto;
+}

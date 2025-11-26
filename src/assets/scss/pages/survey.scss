@@ -1,0 +1,181 @@
+// .surveyForm_design {
+//     .sd-root-modern {
+//         background-color: transparent;
+//         box-shadow: none;
+//     }
+//     .sd-progress-buttons__list {
+//         margin-bottom: 22px;
+//         li {
+//             padding: 0px;
+//             position: relative;
+//             border-top-color: $dark-gray-v2;
+//             &:last-child {
+//                 border: 0px;
+//             }
+//             &::before {
+//                 content: '';
+//                 position: absolute;
+//                 top: -13px;
+//                 left: 0px;
+//                 width: 24px;
+//                 height: 24px;
+//                 border-radius: 50px;
+//                 border: 2px solid $cyan-blue;
+//                 background: #FFFFFF;
+//             }
+//             &::after {
+//                 content: '';
+//                 position: absolute;
+//                 top: -7px;
+//                 left: 6px;
+//                 width: 12px;
+//                 height: 12px;
+//                 border-radius: 50px;
+//                 // border: 2px solid $cyan-blue;
+//                 // background: $cyan-blue;
+//             }
+//             &.sd-progress-buttons__list-element--current {
+//                 border-top-color: $dark-gray-v2;
+//             }
+//             &.sd-progress-buttons__list-element--passed {
+//                 border-top-color: green;
+//                 &::before {
+//                     background: green;
+//                     border: 2px solid green;
+//                 }
+//                 &::after {
+//                     background: $color-white;
+//                     border: 2px solid green;
+//                 }
+//                 .sd-progress-buttons__page-title {
+//                     color: $cyan-blue;
+//                 }
+//             }
+//             .sd-progress-buttons__page-title {
+//                 font-size: 12px;
+//                 font-weight: 700;
+//                 line-height: 18px;
+//                 margin-top: 16px;
+//                 color: $dark-gray;
+//                 text-align: left;
+//             }
+//         }
+//     }
+//     .sv-components-row {
+//         .sd-body {
+//             padding: 0px;
+//         }
+//         .sd-element--complex {
+//             &.sd-element--with-frame {
+//                 padding-bottom: 25px;
+//                 border: none;
+//                 box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+//                 &> {
+//                     .sd-element__header--location-top {
+//                         padding: 10px 0px;
+//                         &::after {
+//                             bottom: -11px;
+//                         }
+//                         .sd-element__title {
+//                             .sv-string-viewer {
+//                                 font-size: 15px;
+//                                 color: $primary;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .sd-panel {
+//         .sd-row--multiple {
+//             row-gap: 20px;
+//         }
+//     }
+//     .sd-panel__content {
+//         padding-top: 22px;
+//         .sd-row {
+//             margin-top: 20px;
+//             &:first-of-type {
+//                 margin-top: 0px;
+//             }
+//         }
+//         .sd-question__header--location-top {
+//             padding-bottom: 10px;
+//             .sd-element__title {
+//                 .sv-string-viewer {
+//                     font-size: 13px;
+//                 }
+//             }
+//         }
+//         .sd-question__content {
+//             .sd-input {
+//                 background-color: transparent;
+//                 border: 1px solid #dee2e6;
+//                 padding: 6px 12px;
+//                 box-shadow: none;
+//                 font-size: 13px;
+//                 line-height: 22px;
+//                 .sd-dropdown__value {
+//                     .sv-string-viewer, .sd-dropdown__filter-string-input {
+//                         font-size: 13px;
+//                         line-height: 22px;
+//                     }
+//                 }
+//             }
+//         }
+//         .sd-question__erbox--above-question {
+//             margin-bottom: 10px;
+//             font-size: 10px;
+//             padding: 5px 12px;
+//         }
+//     }
+// }
+
+.custom-survey {
+    max-height: calc(88vh + 85px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    .sd-body.sd-body--static {
+        max-width: 100%;
+        padding: 32px 0px;
+    }
+}
+
+.sd-item--checked {
+    .sd-item__decorator {
+        position: relative;
+        &::after {
+            content: '';
+            width: 0.5em;
+            height: 0.8em;
+            border: solid #fff;
+            border-width: 0 0.2em 0.2em 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            margin-top: -0.1em;
+        }
+    }
+    .sd-checkbox__control {
+        &:focus {
+            &+ {
+                .sd-item__decorator {
+                    &::after {
+                        content: '';
+                        width: 0.5em;
+                        height: 0.8em;
+                        border: solid #FF8643;
+                        border-width: 0 0.2em 0.2em 0;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) rotate(45deg);
+                        margin-top: -0.1em;
+                    }
+                }
+            }
+        }
+    }
+}

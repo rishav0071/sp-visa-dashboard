@@ -1,0 +1,21 @@
+.import-guideline {
+    @include media-breakpoint-up(sm) {
+        flex: 0 0 280px;
+        max-width: 280px;
+    }
+    .list-items {
+        height: 250px;
+        overflow-y: auto;
+        border-radius: 4px;
+        z-index: 1;
+        li {
+            font-size: 14px;
+            padding: 4px 8px;
+            line-height: 22px;
+            cursor: pointer;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+}

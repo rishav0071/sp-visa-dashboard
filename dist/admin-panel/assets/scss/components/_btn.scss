@@ -1,0 +1,139 @@
+.btn {
+    font-size: 14px;
+    color: $color-dark;
+    border-radius: 5px;
+    border-color: transparent;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    &:focus {
+        outline: none;
+        box-shadow: none !important;
+        border-color: transparent;
+    }
+    &:hover {
+        border-color: transparent;
+    }
+    &.btn-white {
+        background-color: $color-white;
+        border: 1px solid $border-light-4;
+        &:hover {
+            background-color: $primary;
+            color: $color-white;
+        }
+    }
+
+
+    &.btn-primary {
+        background-color: $primary;
+        border: 1px solid $border-light-4;
+        color: $color-white;
+        &:active {
+            background-color: $primary;
+            border: 1px solid $border-light-4;
+            color: $color-white;
+        }
+        &:hover {
+            background-color: $primary-hover;
+        }
+    }
+    &.btn-primary-outline {
+        background-color: $color-white;
+        border: 1px solid $primary;
+        color: $primary;
+        &:active {
+            background-color: $color-white;
+            border: 1px solid $primary;
+            color: $primary;
+        }
+        &:hover {
+            background-color: $primary;
+            color: $color-white;
+        }
+    }
+}
+
+.dropdownSelBtn {
+    .btn {
+        font-size: 14px;
+        border-radius: 5px;
+        width: 185px;
+    }
+}
+
+.dropdown.dropdownHover {
+    &:hover {
+        > .dropdown-menu  {
+            display: block;
+        }
+    }
+    > .dropdown-menu {
+        li {
+            position: relative;
+            .dropdown-item {
+                &::after {
+                    display: none;
+                }
+            }
+            > .dropdown-menu {
+                inset: 0px auto auto 100% !important;
+                transform: unset !important;
+            }
+            &:hover {
+                > .dropdown-menu {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+// btn-outline
+.btn-outline {
+    &.outline-success {
+        background: rgba(129, 255, 221, 0.1);
+        color: #03CE98;
+    }
+    &.outline-warning {
+        background: rgba(251, 192, 120, 0.1);
+        color: #F8961E;
+    }
+    &.outline-info {
+        background: rgba(132, 203, 247, 0.1);
+        color: #116293;
+    }
+    &.outline-pink {
+        background: rgba(247, 134, 201, 0.05);
+        color: #F25FB7;
+    }
+    &.outline-blue {
+        background: rgba(173, 133, 249, 0.1);
+        color: #5F1ED9;
+    }
+    &.outline-danger {
+        background: rgba(255, 187, 186, 0.10);
+        color: #EE7674;
+    }
+    &.outline-magenta {
+        background: rgba(255, 168, 189, 0.08);
+        color: #B00C34;
+    }
+}
+
+@include media-breakpoint-down(xxl) {
+    .btn {
+        font-size: 12px;
+    }
+    .dropdownSelBtn {
+        .btn {
+            width: 160px;
+            font-size: 12px;
+        }
+        .dropdown-menu {
+            li {
+                a {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

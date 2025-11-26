@@ -1,0 +1,29 @@
+
+.not-found-page .w-100.d-flex{
+    height: 100vh;
+}
+.not-found-page img{
+    width: 160px;
+}
+.not-found-page h1 {
+   background-image: url("../../images/oops.jpg");
+   background-repeat: repeat;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   font-size: 120px;
+   text-align: center;
+   font-weight: bold;
+   -webkit-font-smoothing: antialiased;
+   font-family: 'Steelfish Rg', 'helvetica neue',
+            helvetica, arial, sans-serif;
+   font-weight: 800;
+}
+.not-found-page .position-absolute{
+    right: -135px;
+}
+.not-found-page .z-index-1{
+    z-index: 1;
+}
+.not-found-page .z-index-3{
+    z-index: 3;
+}

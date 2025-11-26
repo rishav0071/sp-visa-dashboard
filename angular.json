@@ -1,0 +1,130 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "admin-panel": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-builders/custom-webpack:browser",
+                    "options": {
+                        "customWebpackConfig": { "path": "./webpack.config.ts" },
+                        "allowedCommonJsDependencies": ["lodash"],
+                        "outputPath": "dist/admin-panel",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": ["src/favicon.ico", "src/assets", "src/serviceworker.js"],
+                        "styles": [
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "node_modules/angular-calendar/css/angular-calendar.css",
+                            "node_modules/survey-core/defaultV2.min.css",
+                            "src/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "6mb",
+                                    "maximumError": "6mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "199kb",
+                                    "maximumError": "199kb"
+                                }
+                            ],
+                            "buildOptimizer": false,
+                            "optimization": true,
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.prod.ts"
+                            }],
+                            "outputHashing": "all"
+                        },
+                        "staging": {
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "6mb",
+                                    "maximumError": "6mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "199kb",
+                                    "maximumError": "199kb"
+                                }
+                            ],
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.staging.ts"
+                            }],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-builders/custom-webpack:dev-server",
+                    "options": {
+                        "browserTarget": "admin-panel:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "admin-panel:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "admin-panel:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-builders/custom-webpack:extract-i18n",
+                    "options": {
+                        "browserTarget": "admin-panel:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-builders/custom-webpack:karma",
+                    "options": {
+                        "customWebpackConfig": { "path": "./webpack.config.ts" },
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "inlineStyleLanguage": "scss",
+                        "assets": ["src/favicon.ico", "src/assets"],
+                        "styles": ["src/styles.scss"],
+                        "scripts": []
+                    }
+                }
+            }
+        }
+    },
+    "cli": {
+        "analytics": "1e973370-bde4-4f4e-beb4-94a3e4886a50"
+    }
+}

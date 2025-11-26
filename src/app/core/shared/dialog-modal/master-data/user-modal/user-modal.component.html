@@ -1,0 +1,412 @@
+<div class="modalDialog mx-sm-3">
+  <h5 class="modal__title text-center text-dark mb-md-4 mb-3">
+    {{ f._id.value ? "Update" : "Add" }} User
+  </h5>
+
+  <div class="dialogContent">
+    <ng-container *ngIf="!spiner">
+      <form
+        class="modal_form_design"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Name -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"
+                >Name <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                formControlName="name"
+                [ngClass]="{
+                  'is-invalid': (sub || f.name.touched) && f.name.errors
+                }"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+                placeholder="Enter name"
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"
+                >Email <span class="text-danger">*</span></label
+              >
+              <input
+                type="email"
+                formControlName="email"
+                [ngClass]="{
+                  'is-invalid': (sub || f.email.touched) && f.email.errors
+                }"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+                placeholder="Enter email"
+              />
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"
+                >Date of Birth <span class="text-danger">*</span></label
+              >
+              <input
+                type="date"
+                formControlName="dob"
+                [ngClass]="{
+                  'is-invalid': (sub || f.dob.touched) && f.dob.errors
+                }"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+              />
+            </div>
+
+            <!-- Passport -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"
+                >Passport Number <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                formControlName="passport"
+                [ngClass]="{
+                  'is-invalid': (sub || f.passport.touched) && f.passport.errors
+                }"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+                placeholder="Enter passport number"
+              />
+            </div>
+
+            <!-- TRN Number -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"
+                >TRN Number <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                formControlName="trnNumber"
+                [ngClass]="{
+                  'is-invalid':
+                    (sub || f.trnNumber.touched) && f.trnNumber.errors
+                }"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+                placeholder="Enter TRN number"
+              />
+            </div>
+
+            <!-- TRN Number -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"
+                >Submission Date <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                formControlName="submissionDate"
+                [ngClass]="{
+                  'is-invalid':
+                    (sub || f.submissionDate.touched) && f.submissionDate.errors
+                }"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+                placeholder="Enter Submission Date"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"> Status Date </label>
+              <input
+                type="text"
+                formControlName="rejectionDate"
+                [ngClass]="{
+                  'is-invalid':
+                    (sub || f.rejectionDate.touched) && f.rejectionDate.errors
+                }"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+                placeholder="Enter Rejection Date"
+              />
+            </div>
+
+            <!-- File Status -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2">File Status</label>
+              <input
+                type="text"
+                formControlName="fileStatus"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+                placeholder="Enter File Status"
+              />
+            </div>
+
+            <!-- Rejection File -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"> Status File </label>
+              <input
+                type="file"
+                (change)="onFileChange($event, 'rejection')"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+              />
+            </div>
+
+            <!-- Submission File -->
+            <div class="form-group mb-3">
+              <label class="text-dark font-14 fw-600 mb-2"
+                >Submission File</label
+              >
+              <input
+                type="file"
+                (change)="onFileChange($event, 'submission')"
+                class="form-control font-13 fw-500 border bg-white rounded-1"
+              />
+            </div>
+
+            <!-- Address Section -->
+            <div class="row">
+              <div class="col-12">
+                <h6 class="text-dark font-16 fw-600 mb-3 mt-4">
+                  Address Information
+                </h6>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Street Address</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="address.street"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter street address"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2">City</label>
+                  <input
+                    type="text"
+                    formControlName="address.city"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter city"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2">State</label>
+                  <input
+                    type="text"
+                    formControlName="address.state"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter state"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Postal Code</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="address.postalCode"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter postal code"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2">Country</label>
+                  <input
+                    type="text"
+                    formControlName="address.country"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter country"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Invoice Details Section -->
+            <div class="row">
+              <div class="col-12">
+                <h6 class="text-dark font-16 fw-600 mb-3 mt-4">
+                  Invoice Details
+                </h6>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Invoice Number</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="invoiceDetails.invoiceNumber"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter invoice number"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Invoice Date</label
+                  >
+                  <input
+                    type="date"
+                    formControlName="invoiceDetails.invoiceDate"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Invoice Amount</label
+                  >
+                  <input
+                    type="number"
+                    formControlName="invoiceDetails.invoiceAmount"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter invoice amount"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Business Partner</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="invoiceDetails.businessPartner"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter business partner"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Issuing Office</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="invoiceDetails.issuingOffice"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter issuing office"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Receipt Details Section -->
+            <div class="row">
+              <div class="col-12">
+                <h6 class="text-dark font-16 fw-600 mb-3 mt-4">
+                  Receipt Details
+                </h6>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Receipt Number</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="receiptDetails.receiptNumber"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter receipt number"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Payment Date</label
+                  >
+                  <input
+                    type="date"
+                    formControlName="receiptDetails.paymentDate"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Payment Method</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="receiptDetails.paymentMethod"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter payment method"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Amount Paid</label
+                  >
+                  <input
+                    type="number"
+                    formControlName="receiptDetails.amountPaid"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter amount paid"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Visa Details Section -->
+            <div class="row">
+              <div class="col-12">
+                <h6 class="text-dark font-16 fw-600 mb-3 mt-4">Visa Details</h6>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2">Visa Type</label>
+                  <input
+                    type="text"
+                    formControlName="visaDetails.visaType"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter visa type"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="text-dark font-14 fw-600 mb-2"
+                    >Visa Category</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="visaDetails.visaCategory"
+                    class="form-control font-13 fw-500 border bg-white rounded-1"
+                    placeholder="Enter visa category"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="py-4">
+            <button-loader
+              [loader]="loaderActive"
+              [class]="'btn btn-primary text-white modal-btn d-block m-auto'"
+              [text]="f._id.value ? 'Update' : 'Submit'"
+            ></button-loader>
+          </div>
+        </div>
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="spiner">
+      <div
+        class="table-loader w-100 h-100 bg-white d-flex flex-column justify-content-center align-items-center"
+        style="min-height: 400px"
+      >
+        <div class="spin-loader"></div>
+      </div>
+    </ng-container>
+  </div>
+</div>

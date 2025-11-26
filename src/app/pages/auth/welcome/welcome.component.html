@@ -1,0 +1,39 @@
+<form class="auth-form" [formGroup]="login" (ngSubmit)="ngsubmit()">
+  <h2 class="text-center mb-2">Welcome</h2>
+  <p class="text-dark-gray font-14 text-center mb-4">
+    Please login to admin dashboard
+  </p>
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Email/Username</mat-label>
+    <input
+      matInput
+      formControlName="email"
+      required
+      appEmailCaseDirective
+      autocomplete="username"
+    />
+    <mat-error *ngIf="f['email']?.errors?.['required']"
+      >Email Address is required</mat-error
+    >
+    <!-- <mat-error *ngIf="f['email']?.errors?.['invalidEmail']">Please enter a Valid Email Address </mat-error> -->
+  </mat-form-field>
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      required
+      autocomplete="password"
+      type="password"
+    />
+    <mat-error *ngIf="f['password']?.errors?.['required']"
+      >Password is required</mat-error
+    >
+  </mat-form-field>
+  <button
+    type="submit"
+    class="btn btn-primary d-block w-100 font-16 fw-600 m-auto py-3 px-3"
+  >
+    Login
+  </button>
+</form>
