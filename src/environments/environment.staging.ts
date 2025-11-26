@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  url: 'https://visabackend.immivisas.in',
+  url: 'https://onlinefile.immivisau.in',
   assessment_url: process.env['ASSESSMENT_URL'],
   auth_url: process.env['AUTH_URL'],
   communication_url: process.env['COMMUNICATION_URL'],

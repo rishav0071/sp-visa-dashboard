@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // url: 'http://192.168.10.193:9095/rest', //2g
-  url: 'https://visabackend.immivisas.in',
+  url: 'https://onlinefile.immivisau.in',
   // url:'https://hms.viithiisyserp.com/rest',//live
 };
 
